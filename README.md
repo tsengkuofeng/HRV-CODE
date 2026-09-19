@@ -14,6 +14,32 @@
 
 ---
 
+## 取得
+
+只是想看的話，在這一頁直接點檔名就能讀，不用下載任何東西。
+
+**要整包拿走（有裝 git）**
+
+```bash
+git clone https://github.com/tsengkuofeng/HRV-CODE.git
+```
+
+**要整包拿走（沒裝 git）**
+
+這一頁右上角綠色的 **Code** 按鈕 → **Download ZIP**，解開就是全部。
+
+**只想要演算法那一個檔**
+
+點開 `hrv_engine.py`，右上角有下載鈕；或是直接：
+
+```bash
+curl -O https://raw.githubusercontent.com/tsengkuofeng/HRV-CODE/main/hrv_engine.py
+```
+
+它只需要 numpy 和 scipy，不需要這個 repo 的其他東西。
+
+---
+
 ## 最關鍵的限制：30 fps
 
 這支程式真正困難的地方只有一個 —— **相機一秒只有 30 格，一格就是 33 毫秒。而 RMSSD 本身常常只有 20～50 毫秒。**
@@ -111,11 +137,18 @@
 
 用到的東西各有各的授權，不受本 repo 的 MIT 影響：
 
-| | 授權 |
+| 套件 | 授權 |
 |---|---|
-| numpy, scipy | BSD |
-| Pyodide | MPL-2.0 |
-| React Native / Expo | MIT |
+| numpy | BSD-3-Clause（本體）；另內含少量 0BSD、MIT、Zlib、CC0-1.0 的第三方元件 |
+| scipy | BSD-3-Clause |
+| Pyodide 0.23.4 | MPL-2.0 |
+| React Native 0.81 · Expo 54 | MIT |
+
+MPL-2.0 是這幾個裡面唯一有實質條件的：**改了 Pyodide 自己的檔案再發佈**，那些檔案要以 MPL-2.0 釋出。單純載入使用沒有這個義務，也不會影響你自己程式碼的授權。
+
+其餘都是 BSD／MIT 這類寬鬆授權，只有「連同原始碼一起再發佈」時才需要附上它們的著作權聲明。本 repo 沒有內含這些套件的任何副本（執行時才從 CDN 或 npm 取得）。
+
+> 查證日期 2026-09-19：numpy、scipy 取自 PyPI metadata 與各專案 `LICENSE`；Pyodide 取自 `0.23.4` 標籤的 `LICENSE`；React Native、Expo 取自安裝後的 `package.json`。
 
 ---
 
